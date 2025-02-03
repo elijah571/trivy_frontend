@@ -42,7 +42,7 @@ const Login = () => {
       <h2>Login</h2>
 
       {/* Error message handling */}
-      {error && <p className="error-message">{error?.data?.message || "Something went wrong, please try again"}</p>}
+      {error && <p className="error-message">{error?.data?.message}</p>}
 
       <form onSubmit={handleSubmit} className="login-form">
         <input
