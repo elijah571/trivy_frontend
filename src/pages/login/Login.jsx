@@ -20,18 +20,19 @@ const Login = () => {
     }
 
     try {
-      const response = await loginTeacher({ email, password });
+      const response = await loginTeacher({ email, password }, { withCredentials: true });
+
       if (response.error) {
         console.error("Login failed:", response.error);
         return;
       }
 
-      dispatch(setCredentials(response.data)); // Store user in Redux
-      navigate("/mark-attendance"); // Redirect to dashboard
-
-      // Clear form after successful login
-      setEmail("");
-      setPassword("");
+      if (response.data) {
+        dispatch(setCredentials(response.data)); // Store user in Redux
+        navigate("/mark-attendance"); // Redirect to dashboard
+        setEmail("");
+        setPassword("");
+      }
     } catch (err) {
       console.error("Unexpected error:", err);
     }
@@ -41,8 +42,8 @@ const Login = () => {
     <div className="login-container">
       <h2>Login</h2>
 
-      {/* Error message handling */}
-      {error && <p className="error-message">{error?.data?.message}</p>}
+      {/* Display API Error Message */}
+      {error?.data?.message && <p className="error-message">{error.data.message}</p>}
 
       <form onSubmit={handleSubmit} className="login-form">
         <input
@@ -60,11 +61,7 @@ const Login = () => {
           required
         />
         <button type="submit" disabled={isLoading}>
-          {isLoading ? (
-            <span className="loading-spinner"></span> // Optional spinner for loading state
-          ) : (
-            "Login"
-          )}
+          {isLoading ? <span className="loading-spinner"></span> : "Login"}
         </button>
       </form>
     </div>
