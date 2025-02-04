@@ -10,7 +10,7 @@ export const store = configureStore({
   reducer: {
     auth: authReducer, // Reducer to manage auth state
     [apiSlice.reducerPath]: apiSlice.reducer, // API reducer (generic slice for all API calls)
-    [teacherApiSlice.reducerPath]: teacherApiSlice.reducer, // Teacher API reducer
+    [teacherApiSlice.reducerPath]: teacherApiSlice.reducer, 
     [studentApiSlice.reducerPath]: studentApiSlice.reducer, // Student API reducer
     [attendanceApiSlice.reducerPath]: attendanceApiSlice.reducer, // Attendance API reducer
   },

@@ -7,4 +7,5 @@ export const apiSlice = createApi({
   baseQuery,
   tagTypes: ["Teacher", "Student", "Attendance"],
   endpoints: () => ({}),
+  credentials: "include"
 });

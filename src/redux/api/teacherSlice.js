@@ -5,55 +5,55 @@ export const teacherApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     loginTeacher: builder.mutation({
       query: (data) => ({
-        url: `${TEACHERS_URL}/login`,  // Use template literal correctly
+        url: `${TEACHERS_URL}/login`,
         method: "POST",
         body: data,
-        credentials: "include",
+        //credentials: "include",  // This ensures cookies are sent with the request
       }),
     }),
     registerTeacher: builder.mutation({
       query: (data) => ({
-        url: `${TEACHERS_URL}/create`,  // Use template literal correctly
+        url: `${TEACHERS_URL}/create`,
         method: "POST",
         body: data,
-        credentials: "include",
+        // credentials: "include",  // This ensures cookies are sent with the request
       }),
     }),
     logoutTeacher: builder.mutation({
       query: () => ({
-        url: `${TEACHERS_URL}/logout`,  // Use template literal correctly
+        url: `${TEACHERS_URL}/logout`,
         method: "POST",
-        credentials: "include",
+        // credentials: "include",  // This ensures cookies are sent with the request
       }),
     }),
     getTeachers: builder.query({
       query: () => ({
-        url: `${TEACHERS_URL}`,  // Use template literal correctly
-        credentials: "include",
+        url: `${TEACHERS_URL}`,
+        credentials: "include",  // This ensures cookies are sent with the request
       }),
       providesTags: ["Teacher"],
       keepUnusedDataFor: 5,
     }),
     deleteTeacher: builder.mutation({
       query: (teacherId) => ({
-        url: `${TEACHERS_URL}/${teacherId}`,  // Use template literal correctly
+        url: `${TEACHERS_URL}/${teacherId}`,
         method: "DELETE",
-        credentials: "include",
+        // credentials: "include",  // This ensures cookies are sent with the request
       }),
     }),
     getTeacherDetails: builder.query({
       query: (id) => ({
-        url: `${TEACHERS_URL}/${id}`,  // Use template literal correctly
-        credentials: "include",
+        url: `${TEACHERS_URL}/${id}`,
+        credentials: "include",  // This ensures cookies are sent with the request
       }),
       keepUnusedDataFor: 5,
     }),
     updateTeacher: builder.mutation({
       query: (data) => ({
-        url: `${TEACHERS_URL}/${data.teacherId}`,  // Use template literal correctly
+        url: `${TEACHERS_URL}/${data.teacherId}`,
         method: "PUT",
         body: data,
-        credentials: "include",
+        // credentials: "include",  // This ensures cookies are sent with the request
       }),
       invalidatesTags: ["Teacher"],
     }),
