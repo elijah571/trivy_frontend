@@ -9,6 +9,7 @@ export const attendanceApiSlice = apiSlice.injectEndpoints({
         url: `${ATTENDANCE_URL}/mark`,
         method: "POST",
         body: data,
+        credentials: "include",
       }),
     }),
 
@@ -16,6 +17,7 @@ export const attendanceApiSlice = apiSlice.injectEndpoints({
     getTeacherAttendance: builder.query({
       query: (teacherId) => ({
         url: `${ATTENDANCE_URL}/${teacherId}`,
+        credentials: "include",
       }),
       providesTags: ["Attendance"],
       keepUnusedDataFor: 5,
@@ -25,6 +27,7 @@ export const attendanceApiSlice = apiSlice.injectEndpoints({
     getAllAttendance: builder.query({
       query: () => ({
         url: `${ATTENDANCE_URL}/all`,
+        credentials: "include",
       }),
       providesTags: ["Attendance"],
       keepUnusedDataFor: 5,
@@ -34,6 +37,7 @@ export const attendanceApiSlice = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `${ATTENDANCE_URL}/${id}`,
         method: 'DELETE',
+        credentials: "include",
       }),
       invalidatesTags: ["Attendance"],
     }),

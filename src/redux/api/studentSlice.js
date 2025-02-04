@@ -8,11 +8,13 @@ export const studentApiSlice = apiSlice.injectEndpoints({
         url: `${STUDENTS_URL}`, // Create student route
         method: "POST",
         body: data,
+        credentials: "include",
       }),
     }),
     getAllStudents: builder.query({
       query: () => ({
         url: STUDENTS_URL,
+        credentials: "include",
       }),
       providesTags: ["Student"],
       keepUnusedDataFor: 5,
@@ -20,6 +22,7 @@ export const studentApiSlice = apiSlice.injectEndpoints({
     getStudentById: builder.query({
       query: (id) => ({
         url: `${STUDENTS_URL}/${id}`, // Get specific student by ID
+        credentials: "include",
       }),
       keepUnusedDataFor: 5,
     }),
@@ -28,6 +31,7 @@ export const studentApiSlice = apiSlice.injectEndpoints({
         url: `${STUDENTS_URL}/${data._id}`, // Use _id for update
         method: "PUT",
         body: data,
+        credentials: "include",
       }),
       invalidatesTags: ["Student"],
     }),
@@ -35,6 +39,7 @@ export const studentApiSlice = apiSlice.injectEndpoints({
       query: (_id) => ({
         url: `${STUDENTS_URL}/${_id}`, // Use _id for delete
         method: "DELETE",
+        credentials: "include",
       }),
     }),
   }),
